@@ -11,7 +11,7 @@ const navLinks = [
   },
   {
     path: "/doctors",
-    display: "Find a Doctor",
+    display: "Find a Dentist",
   },
   {
     path: "/services",
@@ -45,7 +45,7 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleStickyHeader);
   });
 
-  const toggleMenu = () => menuRef.current.classList.toggle("show");
+  const toggleMenu = () => menuRef.current.classList.toggle("show__menu");
 
   return (
     <header className="header flex items-center" ref={headerRef}>
@@ -57,7 +57,7 @@ const Header = () => {
           </div>
 
           {/* navigation */}
-          <div className="navigation">
+          <div className="navigation" ref={menuRef} onClick={toggleMenu}>
             <ul className="menu flex items-center gap-[2.7rem]">
               {navLinks.map((link, index) => (
                 <li key={index}>
@@ -94,7 +94,7 @@ const Header = () => {
               </button>
             </Link>
 
-            <span className="md:hidden">
+            <span className="md:hidden" onClick={toggleMenu}>
               <BiMenu className="w-6 h-6 cursor-pointer" />
             </span>
           </div>
